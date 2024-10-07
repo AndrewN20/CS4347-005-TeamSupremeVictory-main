@@ -1,0 +1,58 @@
+@startchen
+!theme sunlust
+
+'entity definitions
+entity Game {
+        'pk
+        gm_id <<key>>
+        name
+        'fk
+        developer
+        'fk
+        publisher
+}
+entity Console {
+        'pk
+        name <<key>>
+        console_developer
+        rel_yr
+        eol_yr
+}
+entity Genre {
+        'pk
+        gn_id <<key>>
+        name
+}
+'should this be renamed to "Company"?
+entity Developer {
+        'pk
+        name <<key>>
+        founding_yr
+        '... IDK what else to put here
+}
+entity Emulator {
+        'pk
+        name <<key>>
+        emulated_console
+        init_rel
+        license
+        current_rel_ver
+        website
+}
+
+'relation definitions
+'needs a better name
+relationship Game_Genre {
+        id <<key>>
+}
+relationship Playable_On {
+}
+relationship Makes {
+
+}
+relationship Emulates {
+
+}
+
+
+@endchen
