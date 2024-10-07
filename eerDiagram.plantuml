@@ -42,17 +42,29 @@ entity Emulator {
 
 'relation definitions
 'needs a better name
-relationship Game_Genre {
-        id <<key>>
+relationship "Game_Genre" as gg {
+        'id <<key>>
 }
-relationship Playable_On {
+relationship "Playable_On" as plo {
 }
 relationship Makes {
-
 }
 relationship Emulates {
-
 }
 
+'draw relations
+gg -N- Game
+gg -N- Genre
+
+plo -N- Game
+plo -N- Console
+plo -N- Emulator
+
+Makes -1- Developer
+Makes -N- Game
+Makes -N- Console
+
+Emulates -N- Console
+Emulates -1- Emulator
 
 @endchen
