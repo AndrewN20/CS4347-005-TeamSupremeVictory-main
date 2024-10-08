@@ -1,0 +1,89 @@
+@startchen
+!theme sunlust
+
+'vertical spacing
+skinparam ranksep 100 
+'horizontal spacing
+skinparam nodesep 10  
+
+'entity definitions
+entity Series <<weak>> {
+        name
+        games <<multi>>
+}
+relationship "Made_of" as MO <<identifying>> {
+}
+
+entity Genre {
+        'pk
+        gn_id <<key>>
+        name
+}
+relationship "Game_Genre" as gg {
+}
+entity Game {
+        'pk
+        gm_id <<key>>
+        name
+        genre <<multi>>
+        'fk
+        developer
+        'fk
+        publisher
+}
+Game -N- MO
+MO =1= Series
+
+Game -N- gg
+gg -N- Genre
+
+
+entity Console {
+        'pk
+        name <<key>>
+        console_developer
+        rel_yr
+        eol_yr
+}
+relationship "Playable_On_Console" as ploc {
+}
+entity Company{
+        'pk
+        name <<key>>
+        founding_yr
+        '... IDK what else to put here
+}
+relationship "Makes_Game" as mg {
+}
+relationship "Makes_Console" as mc {
+}
+
+Game -N- ploc
+ploc -N- Console
+
+mg -1- Company
+mg -N- Game
+
+mc -1- Company
+mc -N- Console
+
+entity Emulator {
+        'pk
+        name <<key>>
+        emulated_console
+        init_rel
+        license
+        current_rel_ver
+        website
+}
+relationship "Playable_On_Emulator" as ploe {
+}
+relationship Emulates {
+}
+
+Game -N- ploe
+ploe -N- Emulator
+
+Emulates -N- Console
+Emulates -1- Emulator
+@endchen
