@@ -2,25 +2,11 @@
 !theme sunlust
 
 'vertical spacing
-skinparam ranksep 100 
+skinparam ranksep 30
 'horizontal spacing
 skinparam nodesep 10  
 
 'entity definitions
-entity Series <<weak>> {
-        name
-        games <<multi>>
-}
-relationship "Made_of" as MO <<identifying>> {
-}
-
-entity Genre {
-        'pk
-        gn_id <<key>>
-        name
-}
-relationship "Game_Genre" as gg {
-}
 entity Game {
         'pk
         gm_id <<key>>
@@ -31,12 +17,17 @@ entity Game {
         'fk
         publisher
 }
-Game -N- MO
-MO =1= Series
 
-Game -N- gg
-gg -N- Genre
+entity Series <<weak>> {
+        name
+        games <<multi>>
+}
 
+entity Genre {
+        'pk
+        gn_id <<key>>
+        name
+}
 
 entity Console {
         'pk
@@ -45,27 +36,13 @@ entity Console {
         rel_yr
         eol_yr
 }
-relationship "Playable_On_Console" as ploc {
-}
+
 entity Company{
         'pk
         name <<key>>
         founding_yr
         '... IDK what else to put here
 }
-relationship "Makes_Game" as mg {
-}
-relationship "Makes_Console" as mc {
-}
-
-Game -N- ploc
-ploc -N- Console
-
-mg -1- Company
-mg -N- Game
-
-mc -1- Company
-mc -N- Console
 
 entity Emulator {
         'pk
@@ -76,10 +53,37 @@ entity Emulator {
         current_rel_ver
         website
 }
+'relationship definitions
+relationship "Game_Genre" as gg {
+}
+relationship "Made_of" as MO <<identifying>> {
+}
+relationship "Makes_Game" as mg {
+}
+relationship "Makes_Console" as mc {
+}
+relationship "Playable_On_Console" as ploc {
+}
 relationship "Playable_On_Emulator" as ploe {
 }
 relationship Emulates {
 }
+
+Game -N- MO
+MO =1= Series
+
+Game -N- gg
+gg -N- Genre
+
+
+Game -N- ploc
+ploc -N- Console
+
+mg -1- Company
+mg -N- Game
+
+mc -1- Company
+mc -N- Console
 
 Game -N- ploe
 ploe -N- Emulator
