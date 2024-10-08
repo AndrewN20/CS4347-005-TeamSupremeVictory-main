@@ -16,6 +16,23 @@ entity Series <<weak>> {
         name
         games <<multi>>
 }
+relationship "Contained_within" as cw <<identifying>> {
+}
+
+cw -N- Game
+cw -1- Series
+
+entity Genre {
+        'pk
+        gn_id <<key>>
+        name
+}
+relationship "Game_Genre" as gg {
+}
+
+gg -N- Game
+gg -N- Genre
+
 entity Console {
         'pk
         name <<key>>
@@ -23,18 +40,28 @@ entity Console {
         rel_yr
         eol_yr
 }
-entity Genre {
-        'pk
-        gn_id <<key>>
-        name
+relationship "Playable_On_Console" as ploc {
 }
-'should this be renamed to "Company"?
-entity Developer {
+entity Company{
         'pk
         name <<key>>
         founding_yr
         '... IDK what else to put here
 }
+relationship "Makes_Game" as mg {
+}
+relationship "Makes_Console" as mc {
+}
+
+ploc -N- Game
+ploc -N- Console
+
+mg -1- Company
+mg -N- Game
+
+mc -1- Company
+mc -N- Console
+
 entity Emulator {
         'pk
         name <<key>>
@@ -44,44 +71,14 @@ entity Emulator {
         current_rel_ver
         website
 }
-
-'relation definitions
-'needs a better name
-relationship "Game_Genre" as gg {
-}
-relationship "Contained_within" as cw <<identifying>> {
-}
-relationship "Playable_On_Console" as ploc {
-}
 relationship "Playable_On_Emulator" as ploe {
-}
-relationship "Makes_Game" as mg {
-}
-relationship "Makes_Console" as mc {
 }
 relationship Emulates {
 }
 
-'draw relations
-gg -N- Game
-gg -N- Genre
-
-cw -N- Game
-cw -1- Series
-
-ploc -N- Game
-ploc -N- Console
-
 ploe -N- Game
 ploe -N- Emulator
 
-mg -1- Developer
-mg -N- Game
-
-mc -1- Developer
-mc -N- Console
-
 Emulates -N- Console
 Emulates -1- Emulator
-
 @endchen
