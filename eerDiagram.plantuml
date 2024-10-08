@@ -42,8 +42,8 @@ entity Company{
         'pk
         name <<key>>
         founding_yr
+        'fk
         parent_company
-        '... IDK what else to put here
 }
 
 entity Emulator {
@@ -65,6 +65,8 @@ relationship "Makes_Game" as mg {
 relationship "Publishes_Game" as pg {
 }
 relationship "Makes_Console" as mc {
+}
+relationship "Owns" as own {
 }
 relationship "Playable_On_Console" as ploc {
 }
@@ -93,6 +95,9 @@ pg -N- Game
 
 mc -1- Company
 mc =N= Console
+
+own -1- Company
+own -N- Company
 
 Emulates -1- Console
 Emulates =1= Emulator
