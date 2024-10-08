@@ -6,10 +6,15 @@ entity Game {
         'pk
         gm_id <<key>>
         name
+        genre <<multi>>
         'fk
         developer
         'fk
         publisher
+}
+entity Series <<weak>> {
+        name
+        games <<multi>>
 }
 entity Console {
         'pk
@@ -43,11 +48,16 @@ entity Emulator {
 'relation definitions
 'needs a better name
 relationship "Game_Genre" as gg {
-        'id <<key>>
 }
-relationship "Playable_On" as plo {
+relationship "Contained_within" as cw <<identifying>> {
 }
-relationship Makes {
+relationship "Playable_On_Console" as ploc {
+}
+relationship "Playable_On_Emulator" as ploe {
+}
+relationship "Makes_Game" as mg {
+}
+relationship "Makes_Console" as mc {
 }
 relationship Emulates {
 }
@@ -56,13 +66,20 @@ relationship Emulates {
 gg -N- Game
 gg -N- Genre
 
-plo -N- Game
-plo -N- Console
-plo -N- Emulator
+cw -N- Game
+cw -1- Series
 
-Makes -1- Developer
-Makes -N- Game
-Makes -N- Console
+ploc -N- Game
+ploc -N- Console
+
+ploe -N- Game
+ploe -N- Emulator
+
+mg -1- Developer
+mg -N- Game
+
+mc -1- Developer
+mc -N- Console
 
 Emulates -N- Console
 Emulates -1- Emulator
