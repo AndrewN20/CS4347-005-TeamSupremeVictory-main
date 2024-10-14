@@ -1,5 +1,6 @@
 @startchen
-!theme sunlust
+!theme mars
+'!theme mono
 
 'vertical spacing
 skinparam ranksep 30
@@ -41,7 +42,8 @@ entity Company{
         'pk
         name <<key>>
         founding_yr
-        '... IDK what else to put here
+        'fk
+        parent_company
 }
 
 entity Emulator {
@@ -60,7 +62,11 @@ relationship "Made_of" as MO <<identifying>> {
 }
 relationship "Makes_Game" as mg {
 }
+relationship "Publishes_Game" as pg {
+}
 relationship "Makes_Console" as mc {
+}
+relationship "Owns" as own {
 }
 relationship "Playable_On_Console" as ploc {
 }
@@ -69,25 +75,30 @@ relationship "Playable_On_Emulator" as ploe {
 relationship Emulates {
 }
 
-Game -N- MO
+Game -(1,N)- MO
 MO =1= Series
 
 Game -N- gg
 gg -N- Genre
 
-
-Game -N- ploc
+Game =N= ploc
 ploc -N- Console
 
+Game -N- ploe
+ploe -1- Emulator
+
 mg -1- Company
-mg -N- Game
+mg =N= Game
+
+pg -1- Company
+pg -N- Game
 
 mc -1- Company
-mc -N- Console
+mc =N= Console
 
-Game -N- ploe
-ploe -N- Emulator
+own -1- Company
+own -N- Company
 
-Emulates -N- Console
-Emulates -1- Emulator
+Emulates -1- Console
+Emulates =1= Emulator
 @endchen
