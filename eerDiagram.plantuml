@@ -24,15 +24,10 @@ entity Series <<weak>> {
         games <<multi>>
 }
 
-entity Genre {
-        'pk
-        gn_id <<key>>
-        name
-}
-
 entity Console {
         'pk
         name <<key>>
+        'fk
         console_developer
         rel_yr
         eol_yr
@@ -49,6 +44,7 @@ entity Company{
 entity Emulator {
         'pk
         name <<key>>
+        'fk
         emulated_console
         init_rel
         license
@@ -56,8 +52,6 @@ entity Emulator {
         website
 }
 'relationship definitions
-relationship "Game_Genre" as gg {
-}
 relationship "Made_of" as MO <<identifying>> {
 }
 relationship "Makes_Game" as mg {
@@ -78,9 +72,6 @@ relationship Emulates {
 Game -(1,N)- MO
 MO =1= Series
 
-Game -N- gg
-gg -N- Genre
-
 Game =N= ploc
 ploc -N- Console
 
@@ -91,7 +82,7 @@ mg -1- Company
 mg =N= Game
 
 pg -1- Company
-pg -N- Game
+pg =N= Game
 
 mc -1- Company
 mc =N= Console
