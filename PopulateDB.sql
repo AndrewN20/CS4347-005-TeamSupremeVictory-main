@@ -170,7 +170,7 @@ insert into Playable_on_Console (console, gameID) values
 ('PC', 6),
 ('PC', 7),
 ('PC', 8),
-('PC', 5),
+('PC', 9),
 ('PC', 10),
 ('Nintendo Switch', 10),
 ('PlayStation 4', 10),
