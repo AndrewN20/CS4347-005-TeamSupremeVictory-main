@@ -38,10 +38,11 @@ CREATE TABLE Console (
 );
 
 CREATE TABLE Emulator (
-	name CHAR(50) PRIMARY KEY,
-	emulated_console CHAR(50),
+	id INT PRIMARY KEY,
+	name CHAR(50) NOT NULL,
+	emulated_console CHAR(50) NOT NULL,
 	int_rel INT,
-	license CHAR(50),
+	license CHAR(100),
 	current_rel_ver CHAR(50),
 	website CHAR(100),
 	FOREIGN KEY (emulated_console) REFERENCES Console(name)
@@ -55,8 +56,8 @@ CREATE TABLE Playable_on_Console (
 );
 
 CREATE TABLE Playable_on_Emulator (
-	emulator CHAR(50),
+	emulator INT,
 	gameID INT,
-	FOREIGN KEY (emulator) REFERENCES Emulator(name),
+	FOREIGN KEY (emulator) REFERENCES Emulator(id),
 	FOREIGN KEY (gameID) references Game(gm_id)
 );
