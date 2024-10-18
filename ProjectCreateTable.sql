@@ -4,7 +4,6 @@ CREATE TABLE Company (
 	founding_yr INT,
 	parent_company VARCHAR(50),
 	FOREIGN KEY (parent_company) REFERENCES Company(name)
-	ON DELETE Cascade ON UPDATE Cascade
 );
 
 CREATE TABLE Game (
@@ -13,10 +12,8 @@ CREATE TABLE Game (
 	publisher VARCHAR(50),
 	name VARCHAR(50),
 	rel_year INT,
-	FOREIGN KEY (developer) REFERENCES Company(name)
-	ON DELETE Cascade ON UPDATE Cascade,
+	FOREIGN KEY (developer) REFERENCES Company(name),
 	FOREIGN KEY (publisher) REFERENCES Company(name)
-	ON DELETE Cascade ON UPDATE Cascade
 );
 
 CREATE TABLE Series (
@@ -40,7 +37,6 @@ CREATE TABLE Console (
 	rel_yr INT,
 	eol_yr INT,
 	FOREIGN KEY (console_developer) references Company(name)
-	ON DELETE Cascade ON UPDATE Cascade
 );
 
 CREATE TABLE Emulator (
