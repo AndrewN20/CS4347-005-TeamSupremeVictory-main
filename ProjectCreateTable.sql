@@ -1,17 +1,17 @@
 /*Updated the code to include integrity constraints and new foreign keys*/
 CREATE TABLE Company (
-	name CHAR(50) PRIMARY KEY,
+	name VARCHAR(50) PRIMARY KEY,
 	founding_yr INT,
-	parent_company CHAR(50),
+	parent_company VARCHAR(50),
 	FOREIGN KEY (parent_company) REFERENCES Company(name)
 	ON DELETE Cascade ON UPDATE Cascade
 );
 
 CREATE TABLE Game (
 	gm_id INT PRIMARY KEY,
-	developer CHAR(50),
-	publisher CHAR(50),
-	name CHAR(50),
+	developer VARCHAR(50),
+	publisher VARCHAR(50),
+	name VARCHAR(50),
 	rel_year INT,
 	FOREIGN KEY (developer) REFERENCES Company(name)
 	ON DELETE Cascade ON UPDATE Cascade,
@@ -21,7 +21,7 @@ CREATE TABLE Game (
 
 CREATE TABLE Series (
 	s_id INT PRIMARY KEY,
-	name CHAR(50)
+	name VARCHAR(50)
 );
 
 CREATE TABLE made_of (
@@ -35,8 +35,8 @@ CREATE TABLE made_of (
 );
 
 CREATE TABLE Console (
-	name CHAR(50) PRIMARY KEY,
-	console_developer CHAR(50),
+	name VARCHAR(50) PRIMARY KEY,
+	console_developer VARCHAR(50),
 	rel_yr INT,
 	eol_yr INT,
 	FOREIGN KEY (console_developer) references Company(name)
@@ -44,18 +44,18 @@ CREATE TABLE Console (
 );
 
 CREATE TABLE Emulator (
-	name CHAR(50) PRIMARY KEY,
-	emulated_console CHAR(50) NOT NULL,
+	name VARCHAR(50) PRIMARY KEY,
+	emulated_console VARCHAR(50) NOT NULL,
 	int_rel INT,
-	license CHAR(100),
-	current_rel_ver CHAR(50),
-	website CHAR(100),
+	license VARCHAR(100),
+	current_rel_ver VARCHAR(50),
+	website VARCHAR(255),
 	FOREIGN KEY (emulated_console) REFERENCES Console(name)
 	ON DELETE Cascade ON UPDATE Cascade
 );
 
 CREATE TABLE Genre (
-	name CHAR(50),
+	name VARCHAR(20),
 	genre_id INT PRIMARY KEY,
 );
 
