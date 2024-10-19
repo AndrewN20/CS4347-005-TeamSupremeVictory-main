@@ -1,4 +1,4 @@
-drop table Playable_on_Console, Playable_on_Emulator, Genres, Emulator, Console, Series, Game, Company;
+drop table Made_of, Playable_on_Console, Playable_on_Emulator, Genres, Emulator, Console, Series, Game, Company;
 
 CREATE TABLE Company (
 	name CHAR(50) PRIMARY KEY,
@@ -25,8 +25,15 @@ CREATE TABLE Genres (
 
 CREATE TABLE Series (
 	name CHAR(50),
-	game INT PRIMARY KEY,
-	FOREIGN KEY (game) REFERENCES Game(gm_id)
+	s_id INT PRIMARY KEY
+);
+
+CREATE TABLE Made_of (
+	id INT primary key,
+	s_id INT,
+	gm_id INT,
+	Foreign key (gm_id) references Game(gm_id),
+	FOREIGN KEY (s_id) REFERENCES Series(s_id)
 );
 
 CREATE TABLE Console (
