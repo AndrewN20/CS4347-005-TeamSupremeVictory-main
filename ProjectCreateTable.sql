@@ -1,4 +1,3 @@
-/*Updated the code to include integrity constraints and new foreign keys*/
 CREATE TABLE Company (
 	name VARCHAR(50) PRIMARY KEY,
 	founding_yr INT,
