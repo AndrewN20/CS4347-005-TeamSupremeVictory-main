@@ -1,4 +1,3 @@
-/*Updated the code to include integrity constraints and new foreign keys*/
 CREATE TABLE Company (
 	name VARCHAR(50) PRIMARY KEY,
 	founding_yr INT,
@@ -64,22 +63,3 @@ CREATE TABLE Game_Genre (
 	FOREIGN KEY (gm_id) REFERENCES Game(gm_id)
 	ON DELETE Cascade ON UPDATE Cascade
 );
-
-/*****Optional Relationship Model Code. Removed becuase it wasn't on the relation model******/
-/*CREATE TABLE Playable_on_Console (
-	console CHAR(50),
-	gameID INT,
-	FOREIGN KEY (console) REFERENCES Console(name)
-	ON DELETE Cascade ON UPDATE Cascade,
-	FOREIGN KEY (gameID) references Game(gm_id)
-	ON DELETE Cascade ON UPDATE Cascade
-);
-
-CREATE TABLE Playable_on_Emulator (
-	emulator CHAR(50),
-	gameID INT,
-	FOREIGN KEY (emulator) REFERENCES Emulator(name)
-	ON DELETE Cascade ON UPDATE Cascade,
-	FOREIGN KEY (gameID) references Game(gm_id)
-	ON DELETE Cascade ON UPDATE Cascade
-);*/
