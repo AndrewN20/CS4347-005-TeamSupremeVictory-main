@@ -1,3 +1,5 @@
+drop table Made_of, Playable_on_Console, Playable_on_Emulator, Genres, Emulator, Console, Series, Game, Company;
+
 CREATE TABLE Company (
 	name VARCHAR(50) PRIMARY KEY,
 	founding_yr INT,
