@@ -3,6 +3,7 @@ compiled/
 /doc/
 *~
 *.bak
+.~lock.*
 \#*
 .\#*
 eerDiagram.png
