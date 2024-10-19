@@ -17,16 +17,9 @@ CREATE TABLE Game (
 );
 
 CREATE TABLE Series (
-	s_id INT PRIMARY KEY,
-	name VARCHAR(50)
-);
-
-CREATE TABLE made_of (
-	id INT PRIMARY KEY,
-	s_id INT,
 	gm_id INT,
-	FOREIGN KEY (s_id) REFERENCES Series(s_id)
-	ON DELETE Cascade ON UPDATE Cascade,
+	s_name VARCHAR(50),
+	PRIMARY KEY(gm_id, s_name),
 	FOREIGN KEY (gm_id) REFERENCES Game(gm_id)
 	ON DELETE Cascade ON UPDATE Cascade
 );
@@ -51,35 +44,9 @@ CREATE TABLE Emulator (
 );
 
 CREATE TABLE Genre (
-	name VARCHAR(20),
-	genre_id INT PRIMARY KEY,
-);
-
-CREATE TABLE Game_Genre (
-	id INT PRIMARY KEY,
-	gn_id INT,
 	gm_id INT,
-	FOREIGN KEY (gn_id) REFERENCES Genre(genre_id)
-	ON DELETE Cascade ON UPDATE Cascade,
+	gn_name VARCHAR(20),
+	PRIMARY KEY (gm_id, gn_name),
 	FOREIGN KEY (gm_id) REFERENCES Game(gm_id)
 	ON DELETE Cascade ON UPDATE Cascade
 );
-
-/*****Optional Relationship Model Code. Removed becuase it wasn't on the relation model******/
-/*CREATE TABLE Playable_on_Console (
-	console CHAR(50),
-	gameID INT,
-	FOREIGN KEY (console) REFERENCES Console(name)
-	ON DELETE Cascade ON UPDATE Cascade,
-	FOREIGN KEY (gameID) references Game(gm_id)
-	ON DELETE Cascade ON UPDATE Cascade
-);
-
-CREATE TABLE Playable_on_Emulator (
-	emulator CHAR(50),
-	gameID INT,
-	FOREIGN KEY (emulator) REFERENCES Emulator(name)
-	ON DELETE Cascade ON UPDATE Cascade,
-	FOREIGN KEY (gameID) references Game(gm_id)
-	ON DELETE Cascade ON UPDATE Cascade
-);*/
