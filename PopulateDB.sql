@@ -57,7 +57,66 @@ insert into Game (gm_id, name, developer, publisher, rel_year) values
 (28, 'Halo: Combat Evolved', 'Bungie', 'Microsoft Game Studios', 2001),
 (29, 'Halo 2', 'Bungie', 'Microsoft Game Studios', 2004);
 
-insert into Genres (genreName, gameID) values 
+insert into Series (gm_id, s_name) values
+(1, 'Pokemon'),
+(2, 'Pokemon'),
+(3, 'Grand Theft Auto'),
+(4, 'Grand Theft Auto'),
+(5, 'Civilization'),
+(6, 'Civilization'),
+(7, 'Civilization'),
+(8, 'Civilization'),
+(9, 'Civilization'),
+(10, 'Civilization'),
+(11, 'Legend of Zelda'),
+(12, 'Legend of Zelda'),
+(15, 'Mario'),
+(16, 'Mario'),
+(17, 'Final Fantasy'),
+(18, 'Final Fantasy'),
+(24, 'Final Fantasy'),
+(25, 'Final Fantasy'),
+(14, 'Metriod'),
+(19, 'Metriod'),
+(20, 'Metriod'),
+(21, 'Sonic'),
+(22, 'Sonic'),
+(28, 'Halo'),
+(29,'Halo'),
+(26, 'God of War'),
+(27, 'God of War');
+
+insert into Console (rel_yr, eol_yr, name, console_developer) values 
+(1999, 2003, 'Game Boy Color', 'Nintendo'),
+(2000, 2013, 'PlayStation 2', 'Sony Computer Entertainment'),
+(2001, 2006, 'Xbox', 'Microsoft'),
+(2017, NULL, 'Nintendo Switch', 'Nintendo'),
+(2013, NULL, 'PlayStation 4', 'Sony Interactive Entertainment'),
+(2013, 2020, 'Xbox One', 'Microsoft'),
+(2012, 2017, 'Wii U', 'Nintendo'),
+(NULL, NULL, 'PC', NULL),
+(2001, 2007, 'GameCube', 'Nintendo'),
+(2006, 2013, 'Wii', 'Nintendo'),
+(2005, 2014, 'PlayStation Portable', 'Sony Computer Entertainment'),
+(1985, 1995, 'NES', 'Nintendo'),
+(1989, 1997, 'Sega Genesis', 'Sega'),
+(1995, 2006, 'PlayStation', 'Sony Computer Entertainment'),
+(2007, 2017, 'PlayStation 3', 'Sony Computer Entertainment');
+
+insert into Emulator (name, emulated_console, int_rel, license, current_rel_ver, website) values
+('VisualBoy Advance', 'Game Boy Color', 2001, 'GNU General Public License', '2.1.11', 'https://visualboyadvance.org'),
+('PCSX2', 'PlayStation 2', 2002, 'GNU General Public License version 3 (GPL-3.0)', 'PSCX2 2.0', 'https://pcsx2.net/'),
+('DOSBox', 'PC', 2002, 'GNU General Public License version 2 (GPL-2.0)', 'DOSBox 0.74-3', 'https://www.dosbox.com/'),
+('CEMU', 'Wii U', 2015, 'Proprietary License', '1.27.0', 'https://cemu.info/'),
+('Dolphin', 'GameCube', 2003, 'GNU General Public License version 2 (GPL-2.0)', '5', 'https://dolphin-emu.org/'),
+('PPSSPP', 'PlayStation Portable', 2012, 'GNU General Public License version 2 (GPL-2.0)', '1.15.4', 'https://www.ppsspp.org/'),
+('Nestopia', 'NES', 2000, 'GNU General Public License version 2 (GPL-2.0)', '1.51', 'https://nestopia.sourceforge.net/'),
+('Kega Fusion', 'Sega Genesis', 1998, 'Freeware', '3.64', 'https://kega-fusion.com/'),
+('ePSXe', 'PlayStation', 2000, 'Freeware', '2.0.5', 'https://www.epsxe.com/'),
+('RPCS3', 'PlayStation 3', 2011, 'GNU General Public License version 2 (GPL-2.0)', '0.0.33-17042', 'https://rpcs3.net/download'),
+('Xemu', 'Xbox', 2021, 'GNU General Public License version 2 (GPL-2.0)', '0.7.132', 'https://xemu.app/');
+
+insert into Genre (gn_name, gm_id) values 
 ('RPG', 1),
 ('Adventure', 1),
 ('Strategy', 1),
