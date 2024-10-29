@@ -1,0 +1,11 @@
+Name,emulated_console,init_rel,license,current_rel_ver,website
+mGBA,Game Boy Advance,2001,GNU General Public License,2.1.11,https://visualboyadvance.org
+PCSX2,PlayStation 2,2002,GNU General Public License version 3 (GPL-3.0),2.0.2 ,https://pcsx2.net/
+CEMU,Wii U,2015,Mozilla Public License 2.0,2.2,https://cemu.info/
+Dolphin,GameCube,2003,GNU General Public License version 2 (GPL-2.0),5,https://dolphin-emu.org/
+PPSSPP,PlayStation Portable,2012,GNU General Public License version 2 (GPL-2.0),1.15.4,https://www.ppsspp.org/
+Nestopia,Nintendo Entertainment System (NES),2000,GNU General Public License version 2 (GPL-2.0),1.51,https://nestopia.sourceforge.net/
+bsnes,Super Nintendo Entertainment System (SNES),2004,GNU General Public License version 3 (GPL-3.0),115,https://github.com/bsnes-emu/bsnes
+BeetlePSX,PlayStation,2005,GNU General Public License version 2 (GPL-2.0),0.9.44,https://docs.libretro.com/library/beetle_psx/
+RPCS3,PlayStation 3,2011,GNU General Public License version 2 (GPL-2.0),0.0.33-17046 ,https://rpcs3.net/
+Xemu,Xbox,2021,GNU General Public License version 2 (GPL-2.0),0.7.132,https://xemu.app/
