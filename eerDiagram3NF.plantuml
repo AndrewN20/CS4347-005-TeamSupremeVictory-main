@@ -1,0 +1,107 @@
+@startchen
+!theme mars
+'!theme mono
+
+'vertical spacing
+skinparam ranksep 30
+'horizontal spacing
+skinparam nodesep 10  
+
+'entity definitions
+entity Game {
+        'pk
+        gm_id <<key>>
+        name
+        'fk
+        developer
+        'fk
+        publisher
+}
+
+entity Series <<weak>> {
+        name <<key>>
+        gm_id <<key>>
+}
+
+entity Console {
+        'pk
+        name <<key>>
+        'fk
+        console_developer
+        rel_yr
+        eol_yr
+}
+
+entity Company{
+        'pk
+        name <<key>>
+        founding_yr
+        'fk
+        parent_company
+}
+
+entity Emulator {
+        'pk
+        name <<key>>
+        'fk
+        emulated_console
+        init_rel
+        license
+        current_rel_ver
+        website
+}
+entity Genre {
+gm_id <<key>>
+name <<key>>
+}
+
+'relationship definitions
+relationship "Made_of" as MO <<identifying>> {
+}
+relationship "Makes_Game" as mg {
+}
+relationship "Publishes_Game" as pg {
+}
+relationship "Makes_Console" as mc {
+}
+relationship "Owns" as own {
+}
+relationship "Playable_On_Console" as ploc {
+}
+relationship "Playable_On_Emulator" as ploe {
+}
+relationship Emulates {
+}
+relationship Has {
+}
+relationship Contains {
+}
+
+Game -(1,N)- MO
+MO =1= Series
+
+Game =N= ploc
+ploc -N- Console
+
+Game -N- ploe
+ploe -1- Emulator
+
+mg -1- Company
+mg =N= Game
+
+pg -1- Company
+pg =N= Game
+
+mc -1- Company
+mc =N= Console
+
+own -1- Company
+own -N- Company
+
+Emulates -1- Console
+Emulates =1= Emulator
+
+Game -1- Has
+Has =N= Genre
+
+@endchen
