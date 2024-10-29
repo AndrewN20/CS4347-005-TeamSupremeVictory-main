@@ -8,3 +8,4 @@ compiled/
 .\#*
 eerDiagram.png
 /relationalModel.svgz.png
+*.kate-swp
