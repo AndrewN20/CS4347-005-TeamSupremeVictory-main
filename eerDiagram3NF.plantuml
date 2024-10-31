@@ -68,8 +68,6 @@ relationship "Owns" as own {
 }
 relationship "Playable_On_Console" as ploc {
 }
-relationship "Playable_On_Emulator" as ploe {
-}
 relationship Emulates {
 }
 relationship Has {
@@ -82,9 +80,6 @@ MO =1= Series
 
 Game =N= ploc
 ploc -N- Console
-
-Game -N- ploe
-ploe -1- Emulator
 
 mg -1- Company
 mg =N= Game
