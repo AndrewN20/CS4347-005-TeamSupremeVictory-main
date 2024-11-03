@@ -11,6 +11,7 @@ Table Game {
   name varchar
   developer varchar
   publisher varchar
+  rel_on varchar
 }
 
 Table Series {
@@ -48,6 +49,7 @@ Ref: Company.parent_company < Company.name
 // Company Makes_Console Console
 Ref: Console.console_developer > Company.name
 // Game Playable_On_Console Console
+Ref: Game.rel_on <> Console.name
 // Emulator Emulates Console
 Ref: Emulator.emulated_console - Console.name
 // Company Publishes_Game Game
