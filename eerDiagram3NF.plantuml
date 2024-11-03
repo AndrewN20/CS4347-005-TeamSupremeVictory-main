@@ -72,8 +72,6 @@ relationship Emulates {
 }
 relationship Has {
 }
-relationship Contains {
-}
 
 Game -(1,N)- MO
 MO =1= Series
