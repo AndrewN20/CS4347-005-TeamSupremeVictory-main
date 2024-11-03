@@ -1,28 +1,9 @@
-drop table Made_of, Playable_on_Console, Playable_on_Emulator, Genres, Emulator, Console, Series, Game, Company;
-
 CREATE TABLE Company (
 	name VARCHAR(50) PRIMARY KEY,
 	founding_yr INT,
 	parent_company VARCHAR(50),
 	FOREIGN KEY (parent_company) REFERENCES Company(name)
-);
-
-CREATE TABLE Game (
-	gm_id INT PRIMARY KEY,
-	developer VARCHAR(50),
-	publisher VARCHAR(50),
-	name VARCHAR(50),
-	rel_year INT,
-	FOREIGN KEY (developer) REFERENCES Company(name),
-	FOREIGN KEY (publisher) REFERENCES Company(name)
-);
-
-CREATE TABLE Series (
-	gm_id INT,
-	s_name VARCHAR(50),
-	PRIMARY KEY(gm_id, s_name),
-	FOREIGN KEY (gm_id) REFERENCES Game(gm_id)
-	ON DELETE Cascade ON UPDATE Cascade
+	ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE Console (
@@ -31,6 +12,30 @@ CREATE TABLE Console (
 	rel_yr INT,
 	eol_yr INT,
 	FOREIGN KEY (console_developer) references Company(name)
+	ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Game (
+	gm_id INT PRIMARY KEY,
+	name VARCHAR(50),
+	rel_year INT,
+	developer VARCHAR(50),
+	publisher VARCHAR(50),
+	console_name VARCHAR(50),
+	FOREIGN KEY (developer) REFERENCES Company(name)
+	ON DELETE SET NULL ON UPDATE CASCADE,
+	FOREIGN KEY (publisher) REFERENCES Company(name)
+	ON DELETE SET NULL ON UPDATE CASCADE,
+	FOREIGN KEY (console_name) REFERENCES Console(name)
+	ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Series (
+	gm_id INT,
+	s_name VARCHAR(50),
+	PRIMARY KEY(gm_id, s_name),
+	FOREIGN KEY (gm_id) REFERENCES Game(gm_id)
+	ON DELETE Cascade ON UPDATE Cascade
 );
 
 CREATE TABLE Emulator (
