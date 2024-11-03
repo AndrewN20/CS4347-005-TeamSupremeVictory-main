@@ -1,0 +1,56 @@
+// Can be viewed with https://dbdiagram.io/d
+
+Table Company {
+  name varchar [primary key]
+  founding_yr integer
+  parent_company varchar
+}
+
+Table Game {
+  gm_id integer [primary key]
+  name varchar
+  developer varchar
+  publisher varchar
+}
+
+Table Series {
+  name varchar [primary key]
+  gm_id integer [primary key]
+}
+
+Table Console {
+  name varchar [primary key]
+  rel_year integer
+  eol_year integer
+  console_developer varchar
+}
+
+Table Emulator {
+  name varchar [primary key]
+  emulated_console varchar
+  init_rel integer
+  license varchar
+  current_rel_ver varchar
+  website varchar
+}
+
+Table Genre {
+  name varchar [primary key]
+  gm_id integer [primary key]
+}
+
+// Series Made_of Game
+Ref: Series.gm_id < Game.gm_id
+// Game Has Genre
+Ref: Genre.gm_id > Game.gm_id
+// Company Owns Company
+Ref: Company.parent_company < Company.name
+// Company Makes_Console Console
+Ref: Console.console_developer > Company.name
+// Game Playable_On_Console Console
+// Emulator Emulates Console
+Ref: Emulator.emulated_console - Console.name
+// Company Publishes_Game Game
+Ref: Game.publisher > Company.name
+// Company Makes_Game Game
+Ref: Game.developer > Company.name
