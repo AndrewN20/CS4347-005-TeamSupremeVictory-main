@@ -87,32 +87,25 @@ insert into Series (gm_id, s_name) values
 (27, 'God of War');
 
 insert into Console (rel_yr, eol_yr, name, console_developer) values 
-(1999, 2003, 'Game Boy Color', 'Nintendo'),
 (2000, 2013, 'PlayStation 2', 'Sony Computer Entertainment'),
 (2001, 2006, 'Xbox', 'Microsoft'),
-(2017, NULL, 'Nintendo Switch', 'Nintendo'),
-(2013, NULL, 'PlayStation 4', 'Sony Interactive Entertainment'),
-(2013, 2020, 'Xbox One', 'Microsoft'),
 (2012, 2017, 'Wii U', 'Nintendo'),
-(NULL, NULL, 'PC', NULL),
 (2001, 2007, 'GameCube', 'Nintendo'),
-(2006, 2013, 'Wii', 'Nintendo'),
 (2005, 2014, 'PlayStation Portable', 'Sony Computer Entertainment'),
 (1985, 1995, 'NES', 'Nintendo'),
-(1989, 1997, 'Sega Genesis', 'Sega'),
 (1995, 2006, 'PlayStation', 'Sony Computer Entertainment'),
+(2001, 2007, 'Game Boy Advance', 'Nintendo'),
 (2007, 2017, 'PlayStation 3', 'Sony Computer Entertainment');
 
 insert into Emulator (name, emulated_console, int_rel, license, current_rel_ver, website) values
-('VisualBoy Advance', 'Game Boy Color', 2001, 'GNU General Public License', '2.1.11', 'https://visualboyadvance.org'),
+('VisualBoy Advance', 'Game Boy Advance', 2001, 'GNU General Public License', '2.1.11', 'https://visualboyadvance.org'),
 ('PCSX2', 'PlayStation 2', 2002, 'GNU General Public License version 3 (GPL-3.0)', 'PSCX2 2.0', 'https://pcsx2.net/'),
-('DOSBox', 'PC', 2002, 'GNU General Public License version 2 (GPL-2.0)', 'DOSBox 0.74-3', 'https://www.dosbox.com/'),
 ('CEMU', 'Wii U', 2015, 'Proprietary License', '1.27.0', 'https://cemu.info/'),
 ('Dolphin', 'GameCube', 2003, 'GNU General Public License version 2 (GPL-2.0)', '5', 'https://dolphin-emu.org/'),
 ('PPSSPP', 'PlayStation Portable', 2012, 'GNU General Public License version 2 (GPL-2.0)', '1.15.4', 'https://www.ppsspp.org/'),
 ('Nestopia', 'NES', 2000, 'GNU General Public License version 2 (GPL-2.0)', '1.51', 'https://nestopia.sourceforge.net/'),
-('Kega Fusion', 'Sega Genesis', 1998, 'Freeware', '3.64', 'https://kega-fusion.com/'),
 ('ePSXe', 'PlayStation', 2000, 'Freeware', '2.0.5', 'https://www.epsxe.com/'),
+('Bsnes', 'SNES', 2004, 'GNU General Public License version 3 (GPL-3.0)', '115', 'https://github.com/bsnes-emu/bsnes'),
 ('RPCS3', 'PlayStation 3', 2011, 'GNU General Public License version 2 (GPL-2.0)', '0.0.33-17042', 'https://rpcs3.net/download'),
 ('Xemu', 'Xbox', 2021, 'GNU General Public License version 2 (GPL-2.0)', '0.7.132', 'https://xemu.app/');
 
@@ -151,7 +144,6 @@ insert into Genre (gn_name, gm_id) values
 ('Action-Adventure', 20),
 ('Platformer', 21),
 ('Platformer', 22),
---('Platformer', 23),
 ('RPG', 24),
 ('RPG', 25),
 ('Action-Adventure', 26),
@@ -201,42 +193,6 @@ insert into Made_of (id, s_id, gm_id) values
 (25,9,29),
 (26,10,26),
 (27,10,27);
-
-
-
-insert into Console (rel_yr, eol_yr, name, console_developer) values 
-(1999, 2003, 'Game Boy Color', 'Nintendo'),
-(2000, 2013, 'PlayStation 2', 'Sony Computer Entertainment'),
-(2001, 2006, 'Xbox', 'Microsoft'),
-(2017, NULL, 'Nintendo Switch', 'Nintendo'),
-(2013, NULL, 'PlayStation 4', 'Sony Interactive Entertainment'),
-(2013, 2020, 'Xbox One', 'Microsoft'),
-(2012, 2017, 'Wii U', 'Nintendo'),
-(NULL, NULL, 'PC', NULL),
-(2001, 2007, 'GameCube', 'Nintendo'),
-(2006, 2013, 'Wii', 'Nintendo'),
-(2005, 2014, 'PlayStation Portable', 'Sony Computer Entertainment'),
-(1985, 1995, 'NES', 'Nintendo'),
---(1992, 1996, 'Sega CD', 'Sega'),
-(1989, 1997, 'Sega Genesis', 'Sega'),
---(1995, 1998, 'Sega Saturn', 'Sega'),
-(1995, 2006, 'PlayStation', 'Sony Computer Entertainment'),
-(2007, 2017, 'PlayStation 3', 'Sony Computer Entertainment');
-
-insert into Emulator (name, emulated_console, int_rel, license, current_rel_ver, website) values
-('VisualBoy Advance', 'Game Boy Color', 2001, 'GNU General Public License', '2.1.11', 'https://visualboyadvance.org'),
-('PCSX2', 'PlayStation 2', 2002, 'GNU General Public License version 3 (GPL-3.0)', 'PSCX2 2.0', 'https://pcsx2.net/'),
-('DOSBox', 'PC', 2002, 'GNU General Public License version 2 (GPL-2.0)', 'DOSBox 0.74-3', 'https://www.dosbox.com/'),
-('CEMU', 'Wii U', 2015, 'Proprietary License', '1.27.0', 'https://cemu.info/'),
-('Dolphin', 'GameCube', 2003, 'GNU General Public License version 2 (GPL-2.0)', '5', 'https://dolphin-emu.org/'),
-('PPSSPP', 'PlayStation Portable', 2012, 'GNU General Public License version 2 (GPL-2.0)', '1.15.4', 'https://www.ppsspp.org/'),
-('Nestopia', 'NES', 2000, 'GNU General Public License version 2 (GPL-2.0)', '1.51', 'https://nestopia.sourceforge.net/'),
-('Kega Fusion', 'Sega Genesis', 1998, 'Freeware', '3.64', 'https://kega-fusion.com/'),
---(10,'Kega Fusion', 'Sega CD', 1998, 'Freeware', '3.64', 'https://kega-fusion.com/'),
---(11,'Kega Fusion', 'Sega Saturn', 1998, 'Freeware', '3.64', 'https://kega-fusion.com/'),
-('ePSXe', 'PlayStation', 2000, 'Freeware', '2.0.5', 'https://www.epsxe.com/'),
-('RPCS3', 'PlayStation 3', 2011, 'GNU General Public License version 2 (GPL-2.0)', '0.0.33-17042', 'https://rpcs3.net/download'),
-('Xemu', 'Xbox', 2021, 'GNU General Public License version 2 (GPL-2.0)', '0.7.132', 'https://xemu.app/');
 
 insert into Playable_on_Console (console, gameID) values 
 ('Game Boy Color', 1),
